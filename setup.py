@@ -5,6 +5,31 @@ import distribute_setup
 distribute_setup.use_setuptools()
 from setuptools import setup
 
+class UltraMagicString(object):
+    # Catch-22:
+    # - if I return Unicode, python setup.py --long-description as well
+    #   as python setup.py upload fail with a UnicodeEncodeError
+    # - if I return UTF-8 string, python setup.py sdist register
+    #   fails with an UnicodeDecodeError
+
+    def __init__(self, value):
+        self.value = value
+
+    def __unicode__(self):
+        return self.value.decode('UTF-8')
+
+    if sys.version_info[0] < 3:
+        def __str__(self):
+            return self.value
+    else:
+        __str__ = __unicode__
+
+    def __add__(self, other):
+        return UltraMagicString(self.value + str(other))
+
+    def split(self, *args, **kw):
+        return self.value.split(*args, **kw)
+
 setup(name='winreg_unicode',
       version='0.5.0',
       description='a Unicode-aware winreg package for Python 2',
@@ -30,6 +55,6 @@ setup(name='winreg_unicode',
           'Programming Language :: Python :: 2.7',
           ],
 
-      long_description=open('README.rst').read(),
+      long_description=UltraMagicString(open('README.rst', 'rb').read()),
 
       )
