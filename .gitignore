@@ -1,0 +1,10 @@
+*.py[oc]
+setuptools-*.egg
+build/
+distribute-*.tar.gz
+.backup
+core
+.backup
+*~
+*.bak
+distribute-*.egg
