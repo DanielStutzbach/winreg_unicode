@@ -30,3 +30,12 @@ The following functions *are* included in winreg_unicode:
 .. _EnumValue: http://docs.python.org/py3k/library/winreg.html#winreg.EnumValue
 .. _EnumKey: http://docs.python.org/py3k/library/winreg.html#winreg.EnumKey
 .. _QueryValueEx: http://docs.python.org/py3k/library/winreg.html#winreg.QueryValueEx
+
+Relevant links
+--------------
+
+- `Bug tracker`_
+- `Source code`_
+
+.. _`Bug tracker`: http://github.com/DanielStutzbach/winreg_unicode/issues
+.. _`Source code`: http://github.com/DanielStutzbach/winreg_unicode
