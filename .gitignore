@@ -8,3 +8,5 @@ core
 *~
 *.bak
 distribute-*.egg
+dist/
+*.egg-info/
